@@ -3,9 +3,19 @@ import mongoose from "mongoose";
 mongoose.set('strictQuery', true);
 
 export const connectDB = async () => {
-    const url = "mongodb+srv://bartkoa:EnBhXkHYu9QeaQi4@cluster0.lrqgsxo.mongodb.net/";
+    const username = "bartkoa";
+    const password = "EnBhXkHYu9QeaQi4";
+    const clusterName = "cluster0.lrqgsxo.mongodb.net";
+    const dbName = "cmpt315";
+
+    const url = `mongodb+srv://${username}:${password}@${clusterName}/${dbName}?retryWrites=true&w=majority`;
+
     try {
-        const connection = await mongoose.connect(url);
+        await mongoose.connect(url, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+
         console.log("Database connected successfully");
     } catch (e) {
         console.log("Failed to connect database:", e);
