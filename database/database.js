@@ -7,8 +7,9 @@ export const connectDB = async () => {
     const password = "EnBhXkHYu9QeaQi4";
     const clusterName = "cluster0.lrqgsxo.mongodb.net";
     const dbName = "cmpt315";
+    const collection = "Monsters";
 
-    const url = `mongodb+srv://${username}:${password}@${clusterName}/${dbName}?retryWrites=true&w=majority`;
+    const url = `mongodb+srv://${username}:${password}@${clusterName}/${dbName}/${collection}?retryWrites=true&w=majority`;
 
     try {
         await mongoose.connect(url, {
