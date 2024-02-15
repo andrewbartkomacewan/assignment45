@@ -3,6 +3,7 @@ import Monster from "../models/monster.model.js";
 export const getMonstersFromRepository = async (query) => {
     try {
         const monsters = await Monster.find(query);
+        console.log("Retrieved monsters:", monsters);
         return monsters;
     } catch (e){
         throw Error("Error while fetching monsters");
